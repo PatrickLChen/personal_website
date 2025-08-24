@@ -1,4 +1,4 @@
-# Patrick's Personal Website
+### Patrick's Personal Website
 
 Personal website based off a template from Vercel.
 
