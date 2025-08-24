@@ -6,14 +6,14 @@ export const metadata = {
 export default function Page() {
   const links = [
     {
-      title: "Example Link 1",
-      url: "https://example.com",
-      description: "This is a sample link with some commentary about why I find it interesting."
+      title: "Normalization of Deviance",
+      url: "https://foone.wordpress.com/2019/02/14/normalization-of-deviance/",
+      description: "Give yourself the benefit of the doubt on these things. Too often I see people being mean to themselves in a way they’d never treat anyone else. Be nice to you. You gotta live with you."
     },
     {
-      title: "Example Link 2", 
-      url: "https://example.org",
-      description: "Another example with my thoughts on what makes this worth saving."
+      title: "The Human Factor", 
+      url: "https://www.vanityfair.com/news/business/2014/10/air-france-flight-447-crash",
+      description: "AF447. Interesting take on the progress of man vs. machine"
     }
   ]
 
@@ -21,7 +21,7 @@ export default function Page() {
     <section>
       <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Collection</h1>
       <p className="mb-4">
-        A curated collection of links and things I find worth remembering.
+        A collection of links and things I like keeping around.
       </p>
       
       <div className="space-y-6">
@@ -35,7 +35,7 @@ export default function Page() {
             >
               {link.title}
             </a>
-            <p className="mt-2 text-neutral-600 dark:text-neutral-400">
+            <p className="mt-2 text-neutral-600 dark:text-neutral-400 italic">
               {link.description}
             </p>
           </div>
