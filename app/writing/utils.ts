@@ -1,11 +1,13 @@
 import fs from 'fs'
 import path from 'path'
+import { metadata } from './page'
 
 type Metadata = {
   title: string
   publishedAt: string
   summary: string
   image?: string
+  postStatus: string // 'published' | 'draft' | ''
 }
 
 function parseFrontmatter(fileContent: string) {
@@ -14,8 +16,8 @@ function parseFrontmatter(fileContent: string) {
   let frontMatterBlock = match![1]
   let content = fileContent.replace(frontmatterRegex, '').trim()
   let frontMatterLines = frontMatterBlock.trim().split('\n')
+  
   let metadata: Partial<Metadata> = {}
-
   frontMatterLines.forEach((line) => {
     let [key, ...valueArr] = line.split(': ')
     let value = valueArr.join(': ').trim()
@@ -50,7 +52,7 @@ function getMDXData(dir) {
 }
 
 export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), 'app', 'writing', 'posts'))
+  return getMDXData(path.join(process.cwd(), 'app', 'writing', 'posts')).filter(post => post.metadata.postStatus == 'published')
 }
 
 export function formatDate(date: string, includeRelative = false) {
