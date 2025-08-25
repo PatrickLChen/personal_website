@@ -1,11 +1,13 @@
 import fs from 'fs'
 import path from 'path'
+import { metadata } from './page'
 
 type Metadata = {
   title: string
   publishedAt: string
   summary: string
   image?: string
+  postStatus: string // 'published' | 'draft' | ''
 }
 
 function parseFrontmatter(fileContent: string) {
@@ -50,7 +52,7 @@ function getMDXData(dir) {
 }
 
 export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), 'app', 'writing', 'posts'))
+  return getMDXData(path.join(process.cwd(), 'app', 'writing', 'posts')).filter(post => post.metadata.postStatus == 'published')
 }
 
 export function formatDate(date: string, includeRelative = false) {
